@@ -8,4 +8,7 @@ class ProposicaoTest(unittest.TestCase):
         proposicao = Proposicao('nome', 'termos ementa')
         proposicao.nome = 'novo nome'
         self.assertEqual('nome', proposicao.nome)
- 
+
+    def test_menciona_termo(self):
+        proposicao = Proposicao('nome', 'termos ementa')
+        self.assertTrue(proposicao.menciona_termo('ementa')) 
