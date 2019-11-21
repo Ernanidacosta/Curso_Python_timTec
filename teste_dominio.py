@@ -3,12 +3,12 @@ import unittest
 from dominio import Proposicao
 
 class ProposicaoTest(unittest.TestCase):
-        
+    def setUp(self):
+        self.proposicao = Proposicao('nome', 'termos ementa')
+
     def test_protecao_atributos(self):
-        proposicao = Proposicao('nome', 'termos ementa')
-        proposicao.nome = 'novo nome'
-        self.assertEqual('nome', proposicao.nome)
+        self.proposicao.nome = 'novo nome'
+        self.assertEqual('nome', self.proposicao.nome)
 
     def test_menciona_termo(self):
-        proposicao = Proposicao('nome', 'termos ementa')
-        self.assertTrue(proposicao.menciona_termo('ementa')) 
+        self.assertTrue(self.proposicao.menciona_termo('ementa')) 
