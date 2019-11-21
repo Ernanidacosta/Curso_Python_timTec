@@ -8,3 +8,4 @@ class ProposicaoTest(unittest.TestCase):
         proposicao = Proposicao('nome', 'termos ementa')
         proposicao.nome = 'novo nome'
         self.assertEqual('nome', proposicao.nome)
+ 
