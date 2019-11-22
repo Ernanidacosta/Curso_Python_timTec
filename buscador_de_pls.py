@@ -1,3 +1,4 @@
+import xml.etree.ElementTree as ET
 import urllib.request as request
 
 def cria_url(ano, dtInicio, dtFim):
@@ -10,9 +11,16 @@ def abre_url(url):
         return req.read()
     else:
         return None
+
+def percorre(dados):
+    proposicoes = ET.fromstring(dados)
+    for proposicao in proposicoes:
+        print(proposicao)
+
+
 ano = int(input('Digite o ano: '))
 dtInicio = input('Data Inicio: ')
 dtFim = input('Data Fim: ')
 
 url = cria_url(ano, dtInicio, dtFim)
-print(abre_url(url))
+percorre(abre_url(url))
