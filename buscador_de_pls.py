@@ -11,8 +11,8 @@ def abre_url(url):
     else:
         return None
 ano = int(input('Digite o ano: '))
-dtInicio = int(input('Data Inicio: '))
-dtFim = int(input('Data Fim: '))
+dtInicio = input('Data Inicio: ')
+dtFim = input('Data Fim: ')
 
 url = cria_url(ano, dtInicio, dtFim)
 print(abre_url(url))
