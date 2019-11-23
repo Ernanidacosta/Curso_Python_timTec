@@ -1,3 +1,4 @@
+import sys
 import xml.etree.ElementTree as ET
 import urllib.request as request
 
@@ -17,15 +18,20 @@ def abre_url(url):
 
 def percorre(dados):
     proposicoes = ET.fromstring(dados)
+    filtro = sys.argv[1]
+
     for proposicao in proposicoes:
-        extraiTexto(proposicao)
+        obj = 
+        print(extraiTexto(proposicao))
 
 
 def extraiTexto(proposicao):
     attrs = ('txtEmenta', 'nome')
+    prop_dict = {}
     for tag_filha in proposicao:
         if tag_filha.tag in attrs:
-            print(tag_filha.text.strip())
+            prop_dict[tag_filha.tag] = tag_filha.text.strip()
+    return prop_dict
 
 
 ano = int(input('Digite o ano: '))
