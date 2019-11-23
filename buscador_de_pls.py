@@ -18,8 +18,9 @@ def percorre(dados):
         extraiTexto(proposicao)
 
 def extraiTexto(proposicao):
+    attrs = ('txtEmenta', 'nome')
     for tag_filha in proposicao:
-        if tag_filha.tag == 'txtEmenta':
+        if tag_filha.tag in attrs:
             print (tag_filha.text.strip())
 
 
