@@ -1,9 +1,11 @@
 import xml.etree.ElementTree as ET
 import urllib.request as request
 
+
 def cria_url(ano, dtInicio, dtFim):
     url = 'https://www.camara.leg.br//SitCamaraWs/Proposicoes.asmx/ListarProposicoes?sigla=PL&numero=&ano={}&datApresentacaoIni={}&datApresentacaoFim={}&parteNomeAutor=&idTipoAutor=&siglaPartidoAutor=&siglaUFAutor=&generoAutor=&codEstado=&codOrgaoEstado=&emTramitacao='
     return url.format(ano, dtInicio, dtFim)
+
 
 def abre_url(url):
     req = request.urlopen(url)
@@ -12,16 +14,18 @@ def abre_url(url):
     else:
         return None
 
+
 def percorre(dados):
     proposicoes = ET.fromstring(dados)
     for proposicao in proposicoes:
         extraiTexto(proposicao)
 
+
 def extraiTexto(proposicao):
     attrs = ('txtEmenta', 'nome')
     for tag_filha in proposicao:
         if tag_filha.tag in attrs:
-            print (tag_filha.text.strip())
+            print(tag_filha.text.strip())
 
 
 ano = int(input('Digite o ano: '))
