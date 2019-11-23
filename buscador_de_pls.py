@@ -19,10 +19,15 @@ def abre_url(url):
 def percorre(dados):
     proposicoes = ET.fromstring(dados)
     filtro = sys.argv[1]
+    proposicoes_filtradas = []
 
     for proposicao in proposicoes:
-        obj = 
-        print(extraiTexto(proposicao))
+        obj = extraiTexto(proposicao)
+        if filtro in obj['txtEmenta']:
+            proposicoes_filtradas.append(obj)
+    
+    for proposicao in proposicoes_filtradas:
+        print(proposicao)
 
 
 def extraiTexto(proposicao):
