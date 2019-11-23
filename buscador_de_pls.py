@@ -15,7 +15,12 @@ def abre_url(url):
 def percorre(dados):
     proposicoes = ET.fromstring(dados)
     for proposicao in proposicoes:
-        print(proposicao)
+        extraiTexto(proposicao)
+
+def extraiTexto(proposicao):
+    for tag_filha in proposicao:
+        if tag_filha.tag == 'txtEmenta':
+            print (tag_filha.text.strip())
 
 
 ano = int(input('Digite o ano: '))
