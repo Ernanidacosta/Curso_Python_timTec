@@ -18,5 +18,8 @@ class Proposicao:
     def setEmenta(self, ementa):
         pass
 
+    def __str__(self):
+        return "Nome: {}\n Ementa: {}", format(self.nome, self.ementa)
+
     nome = property(fget=getNome, fset=setNome)
     ementa = property(fget=getEmenta, fset=setEmenta)

@@ -1,4 +1,5 @@
-import buscador_de_pls
+from buscador_de_pls import cria_url, abre_url, percorre
+
 
 with open('retorno.xml', 'wb') as data:
     response = abre_url(cria_url(2011, '14/11/2011', '16/11/2011'))

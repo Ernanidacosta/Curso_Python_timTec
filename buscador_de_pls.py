@@ -18,25 +18,26 @@ def abre_url(url):
 
 def percorre(dados):
     proposicoes = ET.fromstring(dados)
-    filtro = sys.argv[1]
+    filtro = ""
     proposicoes_filtradas = []
-
-    for proposicao in proposicoes:
-        obj = extraiTexto(proposicao)
-        if filtro in obj['txtEmenta']:
-            proposicoes_filtradas.append(obj)
+    PendingDeprecationWarning
+    proposicoes = [extraiAtributos(prop) for prop in proposicoes]
+    proposicoes = [Proposicao(prop['nome'], prop['txtEmenta'])
+                    for prop in proposicoes]
+    proposicoes_filtradas = filter(lambda x: x.menciona_termo(filtro),
+                                    proposicoes)
     
-    for proposicao in proposicoes_filtradas:
-        print(proposicao)
+    for prop in proposicoes_filtradas:
+        print(prop)
 
 
-def extraiTexto(proposicao):
+def extraiAtributos(proposicao):
     attrs = ('txtEmenta', 'nome')
     prop_dict = {}
     for tag_filha in proposicao:
         if tag_filha.tag in attrs:
             prop_dict[tag_filha.tag] = tag_filha.text.strip()
-    return prop_dict
+
 
 
 ano = int(input('Digite o ano: '))
