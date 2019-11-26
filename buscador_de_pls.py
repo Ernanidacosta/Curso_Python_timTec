@@ -22,10 +22,8 @@ def percorre(dados):
     proposicoes_filtradas = []
     PendingDeprecationWarning
     proposicoes = [extraiAtributos(prop) for prop in proposicoes]
-    proposicoes = [Proposicao(prop['nome'], prop['txtEmenta'])
-                    for prop in proposicoes]
-    proposicoes_filtradas = filter(lambda x: x.menciona_termo(filtro),
-                                    proposicoes)
+    proposicoes = [Proposicao(prop['nome'], prop['txtEmenta'])for prop in proposicoes]
+    proposicoes_filtradas = filter(lambda x: x.menciona_termo(filtro),proposicoes)
     
     for prop in proposicoes_filtradas:
         print(prop)
